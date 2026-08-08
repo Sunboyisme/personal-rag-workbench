@@ -1,0 +1,12 @@
+node_modules/
+client/node_modules/
+client/dist/
+data/uploads/
+data/embedding_cache/
+data/vectors/
+data/traces/
+.cursor/
+.env
+*.log
+.DS_Store
+Thumbs.db

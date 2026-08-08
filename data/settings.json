@@ -1,0 +1,22 @@
+{
+  "chat": {
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash"
+  },
+  "embedding": {
+    "baseUrl": "https://api.siliconflow.cn",
+    "model": "BAAI/bge-m3",
+    "dimensions": null
+  },
+  "rerank": {
+    "baseUrl": "https://api.siliconflow.cn",
+    "model": "BAAI/bge-reranker-v2-m3"
+  },
+  "modelCatalog": {
+    "chat": [],
+    "embedding": [],
+    "rerank": []
+  },
+  "activeRecipeId": "recipe_ed292542",
+  "activePromptId": "prompt_default"
+}
