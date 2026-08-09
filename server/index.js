@@ -14,20 +14,33 @@ const { recommendChunkStrategy } = require('./pipeline/chunker/recommend');
 const { buildCollection } = require('./pipeline/indexer');
 const { retrieve } = require('./retrieval/retriever');
 const { buildPrompt } = require('./generation/promptBuilder');
-const { streamChat, parseCitations } = require('./generation/answerer');
 const recipeService = require('./recipeService');
 const promptService = require('./promptService');
-const evalService = require('./evalService');
+const conversationService = require('./conversationService');
+const { handleChatRoute, writeSse } = require('./chatHandler');
+const {
+  getPublicConfig,
+  createRateLimiter,
+  buildCorsOptions,
+  adminAuthMiddleware,
+  isPublicPath,
+  registerPublicRoutes,
+} = require('./publicGateway');
+
+const publicConfig = getPublicConfig();
+const publicRateLimit = createRateLimiter(publicConfig.rateLimitPerMin);
 
 const app = express();
-app.use(cors());
+app.use(cors(buildCorsOptions()));
 app.use(express.json({ limit: '10mb' }));
+app.use((req, res, next) => {
+  if (isPublicPath(req.path)) return next();
+  return adminAuthMiddleware(req, res, next);
+});
+
+registerPublicRoutes(app, publicRateLimit);
 
 const upload = multer({ dest: path.join(dataDir, 'uploads') });
-
-function writeSse(res, event, data) {
-  res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
-}
 
 // Health & settings
 app.get('/api/health', (_req, res) => {
@@ -723,87 +736,47 @@ app.put('/api/recipes/:id', (req, res) => {
   res.json(updated);
 });
 
-// Chat / QA
-app.post('/api/chat', async (req, res) => {
-  const wantsSse = req.body.stream !== false;
+app.delete('/api/recipes/:id', (req, res) => {
   try {
-    const { question, collectionId, recipeId, config } = req.body;
-    const recipe = recipeService.resolveRecipe(recipeId);
-    if (recipeId && !recipeService.listRecipes().some((r) => r.id === recipeId)) {
-      return res.status(400).json({ error: `Recipe 不存在: ${recipeId}` });
-    }
-    const retrievalConfig = { ...(recipe?.retrieval || {}), ...(config?.retrieval || {}) };
-    const result = await retrieve(question, collectionId, retrievalConfig);
-    const sources = store.getSources();
-    const prompt = buildPrompt(question, result.selectedChunks, sources, {
-      ...(recipe?.prompt || {}),
-      ...(config?.prompt || {}),
-    });
-
-    if (wantsSse) {
-      res.setHeader('Content-Type', 'text/event-stream');
-      res.setHeader('Cache-Control', 'no-cache');
-      res.flushHeaders();
-      writeSse(res, 'retrieval', {
-        candidates: result.candidates,
-        selectedChunks: result.selectedChunks.map((c) => ({
-          id: c.id,
-          text: c.text.slice(0, 200),
-          headingPath: c.headingPath,
-        })),
-        prompt,
-        timings: result.timings,
-      });
-
-      let answer = '';
-      for await (const chunk of streamChat(prompt.messages, {
-        ...(recipe?.generation || {}),
-        ...(config?.generation || {}),
-      })) {
-        answer += chunk;
-        writeSse(res, 'token', { text: chunk });
-      }
-
-      const citations = parseCitations(answer, result.selectedChunks);
-      const trace = recipeService.saveTrace({
-        query: question,
-        collectionId,
-        recipeSnapshot: recipe,
-        candidates: result.candidates,
-        prompt,
-        answer,
-        citations,
-        timings: result.timings,
-      });
-      writeSse(res, 'done', { answer, citations, traceId: trace.id });
-      res.end();
-      return;
-    }
-
-    const { chat } = require('./generation/answerer');
-    const answer = await chat(prompt.messages, recipe?.generation || {});
-    const citations = parseCitations(answer, result.selectedChunks);
-    const trace = recipeService.saveTrace({
-      query: question,
-      collectionId,
-      recipeSnapshot: recipe,
-      candidates: result.candidates,
-      prompt,
-      answer,
-      citations,
-      timings: result.timings,
-    });
-    res.json({ answer, citations, trace, retrieval: result });
+    res.json(recipeService.deleteRecipe(req.params.id));
   } catch (error) {
-    if (wantsSse && !res.headersSent) {
-      res.status(400).json({ error: error.message });
-    } else if (wantsSse) {
-      writeSse(res, 'error', { error: error.message });
-      res.end();
-    } else {
-      res.status(400).json({ error: error.message });
-    }
+    res.status(400).json({ error: error.message });
   }
+});
+
+// Chat / QA
+app.post('/api/chat', (req, res) => handleChatRoute(req, res));
+
+// Conversations
+app.get('/api/conversations', (_req, res) => {
+  res.json(conversationService.listConversations());
+});
+
+app.post('/api/conversations', (req, res) => {
+  try {
+    const conv = conversationService.createConversation(req.body || {});
+    res.json(conv);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.get('/api/conversations/:id', (req, res) => {
+  const conv = conversationService.getConversation(req.params.id);
+  if (!conv) return res.status(404).json({ error: '会话不存在' });
+  res.json(conv);
+});
+
+app.patch('/api/conversations/:id', (req, res) => {
+  const updated = conversationService.updateConversation(req.params.id, req.body || {});
+  if (!updated) return res.status(404).json({ error: '会话不存在' });
+  res.json(updated);
+});
+
+app.delete('/api/conversations/:id', (req, res) => {
+  const ok = conversationService.deleteConversation(req.params.id);
+  if (!ok) return res.status(404).json({ error: '会话不存在' });
+  res.json({ ok: true });
 });
 
 // Traces
@@ -819,11 +792,41 @@ app.get('/api/traces/:id', (req, res) => {
 
 // Eval
 app.get('/api/eval', (_req, res) => {
+  evalService.ensureSeedEvalItems();
   res.json(store.getEvalSet());
 });
 
+app.get('/api/eval/criteria', (_req, res) => {
+  res.json(evalService.listCriteria());
+});
+
+app.post('/api/eval/seed', (_req, res) => {
+  const data = store.getEvalSet();
+  if ((data.items || []).length > 0) {
+    return res.json({ seeded: false, message: '评估集已有题目，未覆盖', data });
+  }
+  res.json({ seeded: true, data: evalService.ensureSeedEvalItems() });
+});
+
+app.get('/api/eval/runs/:id', (req, res) => {
+  const run = evalService.getEvalRun(req.params.id);
+  if (!run) return res.status(404).json({ error: '评测报告不存在' });
+  res.json(run);
+});
+
+app.get('/api/eval/compares/:id', (req, res) => {
+  const compare = evalService.getEvalCompare(req.params.id);
+  if (!compare) return res.status(404).json({ error: '对比报告不存在' });
+  res.json(compare);
+});
+
 app.post('/api/eval/items', (req, res) => {
-  res.json(evalService.addEvalItem(req.body));
+  try {
+    if (!req.body?.question?.trim()) return res.status(400).json({ error: '问题不能为空' });
+    res.json(evalService.addEvalItem(req.body));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 app.put('/api/eval/items/:id', (req, res) => {
@@ -842,6 +845,7 @@ app.post('/api/eval/run', async (req, res) => {
     const recipe = req.body.recipeId
       ? recipeService.listRecipes().find((r) => r.id === req.body.recipeId)
       : recipeService.resolveRecipe();
+    if (!recipe) return res.status(400).json({ error: 'Recipe 不存在' });
     const run = await evalService.runEvalBatch({ ...req.body, recipe });
     res.json(run);
   } catch (error) {
@@ -851,14 +855,8 @@ app.post('/api/eval/run', async (req, res) => {
 
 app.post('/api/eval/compare', async (req, res) => {
   try {
-    const { collectionId, recipeIds, itemIds } = req.body;
-    const matrix = [];
-    for (const recipeId of recipeIds || []) {
-      const recipe = recipeService.listRecipes().find((r) => r.id === recipeId);
-      const run = await evalService.runEvalBatch({ collectionId, recipeId, recipe, itemIds });
-      matrix.push({ recipeId, recipeName: recipe?.name, summary: run.summary, results: run.results });
-    }
-    res.json({ matrix });
+    const compare = await evalService.runEvalCompare(req.body || {});
+    res.json(compare);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

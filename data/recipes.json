@@ -1,5 +1,86 @@
 [
   {
+    "id": "recipe_1d35d4a0",
+    "name": "0809问答",
+    "parentId": null,
+    "chunking": {
+      "strategy": "heading",
+      "chunkSize": 800,
+      "overlap": 50,
+      "childSize": 300,
+      "parentSize": 1500
+    },
+    "embedding": {
+      "model": "BAAI/bge-m3",
+      "dimensions": null
+    },
+    "retrieval": {
+      "topK": 20,
+      "finalTopK": 5,
+      "vectorThreshold": 0.4,
+      "rerankThreshold": 0.3,
+      "similarityThreshold": null,
+      "thresholdMode": "off",
+      "useBm25": false,
+      "useRerank": false,
+      "rrfK": 60,
+      "vectorWeight": 1,
+      "bm25Weight": 1,
+      "rerankTopN": 10,
+      "minVectorScoreForRerank": null,
+      "queryRewrite": "off"
+    },
+    "prompt": {
+      "tokenBudget": 4000
+    },
+    "generation": {
+      "temperature": 0.3,
+      "maxTokens": 2000
+    },
+    "createdAt": "2026-08-09T09:21:42.456Z"
+  },
+  {
+    "id": "recipe_0a7d9880",
+    "name": "个人知识库问答",
+    "parentId": null,
+    "chunking": {
+      "strategy": "heading",
+      "chunkSize": 800,
+      "overlap": 50,
+      "childSize": 300,
+      "parentSize": 1500
+    },
+    "embedding": {
+      "model": "BAAI/bge-m3",
+      "dimensions": null
+    },
+    "retrieval": {
+      "topK": 20,
+      "finalTopK": 5,
+      "vectorThreshold": 0.4,
+      "rerankThreshold": 0.3,
+      "similarityThreshold": null,
+      "thresholdMode": "off",
+      "useBm25": false,
+      "useRerank": false,
+      "rrfK": 60,
+      "vectorWeight": 1,
+      "bm25Weight": 1,
+      "rerankTopN": 10,
+      "minVectorScoreForRerank": null,
+      "queryRewrite": "hyde"
+    },
+    "prompt": {
+      "tokenBudget": 4000
+    },
+    "generation": {
+      "temperature": 0.3,
+      "maxTokens": 2000
+    },
+    "createdAt": "2026-08-08T17:19:42.066Z",
+    "updatedAt": "2026-08-08T17:44:17.866Z"
+  },
+  {
     "id": "recipe_ed292542",
     "name": "只有向量检索",
     "parentId": null,

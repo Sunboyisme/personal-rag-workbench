@@ -201,6 +201,7 @@ export const api = {
   createRecipe: (body) => request('/recipes', { method: 'POST', body: JSON.stringify(body) }),
   forkRecipe: (id, name) => request(`/recipes/${id}/fork`, { method: 'POST', body: JSON.stringify({ name }) }),
   updateRecipe: (id, body) => request(`/recipes/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
+  deleteRecipe: (id) => request(`/recipes/${id}`, { method: 'DELETE' }),
   diffRecipes: (a, b) => request(`/recipes/diff?a=${a}&b=${b}`),
   getActiveRecipe: () => request('/recipes/active'),
   setActiveRecipe: (recipeId) =>
@@ -209,7 +210,17 @@ export const api = {
     request('/recipes/apply-lab', { method: 'POST', body: JSON.stringify(body) }),
   getTraces: () => request('/traces'),
   getTrace: (id) => request(`/traces/${id}`),
+  getConversations: () => request('/conversations'),
+  getConversation: (id) => request(`/conversations/${id}`),
+  createConversation: (body) =>
+    request('/conversations', { method: 'POST', body: JSON.stringify(body) }),
+  updateConversation: (id, body) =>
+    request(`/conversations/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+  deleteConversation: (id) => request(`/conversations/${id}`, { method: 'DELETE' }),
   getEval: () => request('/eval'),
+  getEvalCriteria: () => request('/eval/criteria'),
+  getEvalRun: (id) => request(`/eval/runs/${id}`),
+  getEvalCompare: (id) => request(`/eval/compares/${id}`),
   addEvalItem: (body) => request('/eval/items', { method: 'POST', body: JSON.stringify(body) }),
   updateEvalItem: (id, body) => request(`/eval/items/${id}`, { method: 'PUT', body: JSON.stringify(body) }),
   deleteEvalItem: (id) => request(`/eval/items/${id}`, { method: 'DELETE' }),

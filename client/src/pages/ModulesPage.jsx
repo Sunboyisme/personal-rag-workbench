@@ -47,6 +47,7 @@ function emptyCatalog() {
 function ModelPicker({ value, options, onChange, onAdd, onRemove }) {
   const [draft, setDraft] = useState('');
   const [error, setError] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const list = useMemo(() => {
     const ids = new Set(options.map((m) => m.id));
@@ -55,6 +56,24 @@ function ModelPicker({ value, options, onChange, onAdd, onRemove }) {
     }
     return options;
   }, [options, value]);
+
+  const customModels = list.filter((m) => m.custom);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    function onPointerDown(event) {
+      if (!event.target.closest?.('.model-picker-menu')) setMenuOpen(false);
+    }
+    function onKeyDown(event) {
+      if (event.key === 'Escape') setMenuOpen(false);
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [menuOpen]);
 
   function handleAdd() {
     const id = draft.trim();
@@ -74,21 +93,66 @@ function ModelPicker({ value, options, onChange, onAdd, onRemove }) {
     setError('');
   }
 
+  function handleDelete(modelId) {
+    setMenuOpen(false);
+    const target = list.find((m) => m.id === modelId);
+    if (!target?.custom) {
+      alert('内置模型不能删除');
+      return;
+    }
+    if (!window.confirm(`确定从列表移除「${modelId}」？`)) return;
+    onRemove(modelId);
+  }
+
   const selected = list.find((m) => m.id === value);
 
   return (
     <div className="model-picker">
-      <label>
-        模型
-        <select value={value || ''} onChange={(e) => onChange(e.target.value)}>
-          {!value && <option value="">请选择模型</option>}
-          {list.map((m) => (
-            <option key={m.id} value={m.id}>
-              {m.custom ? `${m.id}（自定义）` : m.name || m.id}
-            </option>
-          ))}
-        </select>
-      </label>
+      <div className="model-picker-row">
+        <label className="model-picker-select">
+          模型
+          <select value={value || ''} onChange={(e) => onChange(e.target.value)}>
+            {!value && <option value="">请选择模型</option>}
+            {list.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.custom ? `${m.id}（自定义）` : m.name || m.id}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className={`collection-menu model-picker-menu ${menuOpen ? 'open' : ''}`}>
+          <button
+            type="button"
+            className="btn ghost btn-icon collection-menu-trigger"
+            aria-label="管理当前模型"
+            aria-expanded={menuOpen}
+            onClick={(e) => {
+              e.stopPropagation();
+              setMenuOpen((prev) => !prev);
+            }}
+          >
+            ⋯
+          </button>
+          {menuOpen && (
+            <div className="collection-menu-panel" role="menu">
+              {selected?.custom ? (
+                <button
+                  type="button"
+                  role="menuitem"
+                  className="collection-menu-item danger"
+                  onClick={() => handleDelete(selected.id)}
+                >
+                  删除
+                </button>
+              ) : (
+                <button type="button" role="menuitem" className="collection-menu-item" disabled>
+                  内置模型不可删
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
 
       <div className="model-picker-add">
         <input
@@ -111,16 +175,21 @@ function ModelPicker({ value, options, onChange, onAdd, onRemove }) {
         </button>
       </div>
 
-      {selected?.custom && (
-        <div className="model-picker-meta">
-          <span className="muted small">自定义模型</span>
-          <button
-            type="button"
-            className="btn ghost btn-sm"
-            onClick={() => onRemove(selected.id)}
-          >
-            从列表移除
-          </button>
+      {customModels.length > 0 && (
+        <div className="model-chip-list">
+          {customModels.map((m) => (
+            <span key={m.id} className="model-chip">
+              <span className="model-chip-label">{m.id}</span>
+              <button
+                type="button"
+                className="model-chip-remove"
+                aria-label={`删除 ${m.id}`}
+                onClick={() => handleDelete(m.id)}
+              >
+                ×
+              </button>
+            </span>
+          ))}
         </div>
       )}
       {error && <p className="error-text">{error}</p>}

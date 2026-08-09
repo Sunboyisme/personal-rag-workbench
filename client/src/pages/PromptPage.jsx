@@ -41,13 +41,16 @@ export default function PromptPage() {
 
   async function load(preferId) {
     const [list, active] = await Promise.all([api.getPrompts(), api.getActivePrompt()]);
-    setVersions(list);
     const activeId = active?.activePromptId || list[0]?.id || '';
+    const targetId = preferId || activeId;
+    setVersions(list);
     setActivePromptId(activeId);
-    setSelected((prev) => {
-      const targetId = preferId || prev?.id || activeId;
-      return list.find((v) => v.id === targetId) || list[0] || null;
-    });
+    const next =
+      (preferId && list.find((v) => v.id === preferId)) ||
+      list.find((v) => v.id === targetId) ||
+      list[0] ||
+      null;
+    setSelected(next);
   }
 
   useEffect(() => {
@@ -101,19 +104,30 @@ export default function PromptPage() {
     }
   }
 
-  async function handleFork(id) {
-    const name = prompt('新提示词版本名称');
-    if (!name?.trim()) return;
+  async function handleCreate() {
+    const name = window.prompt('新提示词名称', '未命名提示词');
+    if (name === null) return;
+    const finalName = name.trim() || '未命名提示词';
     try {
-      const created = await api.forkPrompt(id, name.trim());
+      const created = await api.createPrompt({ name: finalName });
       await load(created.id);
-      const useNow = window.confirm(
-        `已复制为「${created.name}」。\n\n复制不会自动影响问答，需要设为「问答默认」才会生效。\n是否现在设为问答默认？`
-      );
-      if (useNow) {
-        await api.setActivePrompt(created.id);
-        setActivePromptId(created.id);
-      }
+      setMessage(`已新建：${created.name}（编辑后记得保存；设为问答默认才会生效）`);
+    } catch (error) {
+      alert(error.message || '创建失败');
+    }
+  }
+
+  async function handleFork(id) {
+    const source = versions.find((v) => v.id === id);
+    const defaultName = `${source?.name || '提示词'} 副本`;
+    const name = window.prompt('新提示词版本名称', defaultName);
+    if (name === null) return;
+    const finalName = name.trim() || defaultName;
+    try {
+      const created = await api.forkPrompt(id, finalName);
+      await load(created.id);
+      setMessage(`已复制为「${created.name}」。编辑后保存，并点「设为问答默认」才会影响问答。`);
+      alert(`已复制为「${created.name}」。\n\n请编辑后点击「设为问答默认」，才会影响问答。`);
     } catch (error) {
       alert(error.message || '复制失败');
     }
@@ -209,7 +223,12 @@ export default function PromptPage() {
 
       <div className="grid-2">
         <section className="card stack">
-          <h3>版本列表</h3>
+          <div className="row-between">
+            <h3>版本列表</h3>
+            <button className="btn secondary btn-compact" type="button" onClick={handleCreate}>
+              新建提示词
+            </button>
+          </div>
           <div className="source-list">
             {versions.map((v) => (
               <div key={v.id} className={`version-row ${selected?.id === v.id ? 'active' : ''}`}>
@@ -255,10 +274,11 @@ export default function PromptPage() {
           </div>
           {selected && (
             <div className="recipe-list-actions">
-              <button className="btn secondary" onClick={() => handleFork(selected.id)}>
+              <button type="button" className="btn secondary" onClick={() => handleFork(selected.id)}>
                 复制此版本
               </button>
               <button
+                type="button"
                 className="btn primary"
                 onClick={handleSetActive}
                 disabled={selected.id === activePromptId}
@@ -268,7 +288,7 @@ export default function PromptPage() {
             </div>
           )}
           <p className="muted small recipe-hint">
-            复制只会新建版本；问答实际使用带「问答默认」标记的那一份。
+            「复制」会新建版本并自动选中；问答实际使用带「问答默认」标记的那一份。
           </p>
         </section>
 

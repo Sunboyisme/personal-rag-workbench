@@ -1,5 +1,43 @@
 [
   {
+    "id": "col_fc0871fa",
+    "name": "0809问答",
+    "chunkSetId": "cs_31c1caaa",
+    "vectorSetId": "vs_6f334cc1",
+    "recipeSnapshot": null,
+    "embedding": {
+      "model": "BAAI/bge-m3",
+      "dimensions": null,
+      "dim": 1024
+    },
+    "stats": {
+      "chunkCount": 29,
+      "model": "BAAI/bge-m3",
+      "dim": 1024,
+      "cost": 0
+    },
+    "builtAt": "2026-08-09T09:18:19.520Z"
+  },
+  {
+    "id": "col_f76b4aeb",
+    "name": "覃彦涛个人知识库问答",
+    "chunkSetId": "cs_5348e953",
+    "vectorSetId": "vs_de37c8d8",
+    "recipeSnapshot": null,
+    "embedding": {
+      "model": "BAAI/bge-m3",
+      "dimensions": null,
+      "dim": 1024
+    },
+    "stats": {
+      "chunkCount": 125,
+      "model": "BAAI/bge-m3",
+      "dim": 1024,
+      "cost": 0.000001
+    },
+    "builtAt": "2026-08-08T17:18:42.199Z"
+  },
+  {
     "id": "col_5ce90e55",
     "name": "覃彦涛的能力画像",
     "chunkSetId": "cs_61db145a",

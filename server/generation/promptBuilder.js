@@ -12,11 +12,17 @@ function renderTemplate(template, vars) {
 function buildPrompt(question, chunks, sources, options = {}) {
   const templates = options.templates || getPromptTemplates();
   const tokenBudget = Number(options.tokenBudget || 4000);
+  const history = Array.isArray(options.history) ? options.history : [];
   const sourceMap = new Map((sources || []).map((s) => [s.id, s]));
 
   const contextBlocks = [];
   const truncatedIds = [];
-  let usedTokens = estimateTokens(templates.system) + estimateTokens(question) + 50;
+  let historyTokens = history.reduce(
+    (sum, m) => sum + estimateTokens(m.content || '') + 8,
+    0
+  );
+  let usedTokens =
+    estimateTokens(templates.system) + estimateTokens(question) + historyTokens + 50;
 
   chunks.forEach((chunk, idx) => {
     const source = sourceMap.get(chunk.sourceId);
@@ -39,20 +45,27 @@ function buildPrompt(question, chunks, sources, options = {}) {
   const contextText = contextBlocks.map((b) => b.text).join('\n\n');
   const user = renderTemplate(templates.userTemplate, { question, context: contextText });
 
+  const messages = [{ role: 'system', content: templates.system }];
+
+  history.forEach((m) => {
+    if (!m?.content?.trim()) return;
+    messages.push({ role: m.role, content: m.content });
+  });
+
+  messages.push({
+    role: 'user',
+    content: `${contextText ? `参考资料：\n\n${contextText}\n\n` : ''}${user}`,
+  });
+
   return {
     system: templates.system,
     contextBlocks,
     user,
+    history,
     totalTokens: usedTokens + estimateTokens(user),
     budget: tokenBudget,
     truncatedIds,
-    messages: [
-      { role: 'system', content: templates.system },
-      {
-        role: 'user',
-        content: `${contextText ? `参考资料：\n\n${contextText}\n\n` : ''}${user}`,
-      },
-    ],
+    messages,
   };
 }
 

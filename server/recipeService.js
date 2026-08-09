@@ -183,6 +183,28 @@ function updateRecipe(id, patch) {
   return recipes[idx];
 }
 
+function deleteRecipe(id) {
+  const recipes = ensureDefaultRecipe();
+  if (recipes.length <= 1) {
+    throw new Error('至少保留一个 Recipe');
+  }
+  const idx = recipes.findIndex((r) => r.id === id);
+  if (idx < 0) throw new Error('Recipe 不存在');
+
+  const removed = recipes[idx];
+  recipes.splice(idx, 1);
+  saveRecipes(recipes);
+
+  const activeId = getActiveRecipeId();
+  if (activeId === id) {
+    const next = recipes[0];
+    const { saveSettings } = require('./store');
+    saveSettings({ activeRecipeId: next.id });
+    return { deleted: removed, activeRecipeId: next.id, recipes };
+  }
+  return { deleted: removed, activeRecipeId: activeId, recipes };
+}
+
 function diffRecipes(aId, bId) {
   const recipes = listRecipes();
   const a = recipes.find((r) => r.id === aId);
@@ -222,6 +244,7 @@ module.exports = {
   createRecipe,
   forkRecipe,
   updateRecipe,
+  deleteRecipe,
   diffRecipes,
   getActiveRecipeId,
   resolveRecipe,

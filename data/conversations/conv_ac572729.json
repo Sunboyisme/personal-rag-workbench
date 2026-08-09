@@ -1,0 +1,213 @@
+{
+  "id": "conv_ac572729",
+  "title": "你了解的模型选型是怎么样的",
+  "collectionId": "col_fc0871fa",
+  "recipeId": "recipe_1d35d4a0",
+  "messages": [
+    {
+      "id": "msg_fb5aff95",
+      "role": "user",
+      "content": "你了解的模型选型是怎么样的",
+      "citations": [],
+      "traceId": null,
+      "createdAt": "2026-08-09T09:27:19.557Z"
+    },
+    {
+      "id": "msg_765ea1d1",
+      "role": "assistant",
+      "content": "关于模型选型，我的理解核心是：**不追新、不堆参数，而是根据任务场景、成本、延迟和复杂度做匹配**。结合我自己的实践，主要有几个维度。\n\n- **按任务复杂度与上下文需求选型**：我会遵循 Context Engineering 的思路，先判断任务的复杂度、需要的上下文长度，再结合成本与响应延迟来选择模型和上下文策略 [3]。简单任务不必要上大模型，复杂任务则要保证模型能力和上下文窗口足够。\n\n- **在 Workflow 与 Agent 之间选型**：我会根据需求是明确的规则流程，还是需要模型自主决策，来选择用低代码 Workflow、Agent，还是两者结合 [2]。能靠传统规则解决的，我一般不会为了 AI 而 AI。\n\n- **Workflow 内部节点选型**：在 Coze/Dify 这类平台上，我会设计意图识别、条件路由、LLM 节点、知识库节点、接口节点等，并明确每个节点的输入输出和失败处理。关键是知道什么时候用规则判断，什么时候该交给 LLM [2]。\n\n- **Agent 模式选型**：用 Vibe Coding 设计 Agent 时，我会按场景选模式——需要查外部数据或事实时加 Tool Use；任务复杂、多步骤且有先后顺序时加 Planning；有关键判断或高风险环节时加反思（Reflection）；能力差异大、需要专业分工时采用 Multi-Agent [2]。\n\n- **RAG 相关选型**：在搭建 RAG 系统时，我还会考虑嵌入模型选型、向量数据库选型、重排序模型选型，以及生成侧的 Prompt 约束，来优化检索效果、减少幻觉 [3]。\n\n整体上，我的选型逻辑是**先定义问题，再匹配方案**：能小则小、能规则则规则，必须交给模型时才选合适能力的模型，最后通过评估和实测来验证选择是否合理。",
+      "citations": [
+        {
+          "index": 3,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "8aaed9aaf98912bf",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "8aaed9aaf98912bf",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "8aaed9aaf98912bf",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 3,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        }
+      ],
+      "traceId": "trace_0d4dcedb",
+      "createdAt": "2026-08-09T09:27:19.557Z"
+    },
+    {
+      "id": "msg_0719a45b",
+      "role": "user",
+      "content": "你具备什么能力",
+      "citations": [],
+      "traceId": null,
+      "createdAt": "2026-08-09T09:28:26.668Z"
+    },
+    {
+      "id": "msg_ec265db6",
+      "role": "assistant",
+      "content": "我主要具备三块能力：**AI 认知与应用、设计能力、产品专业能力**，并且有很强的自学驱动力去持续更新这些技能。下面按模块展开。\n\n### AI 认知及应用能力\n- **技术基础**：理解机器学习、深度学习及主流学习范式，熟悉神经网络、Embedding、Transformer、Token、扩散模型、多模态等核心概念，也了解大模型从预训练、SFT、RLHF 到微调的基本流程 [2]。\n- **Prompt 与上下文工程**：能写出高质量 Prompt，掌握角色、背景、目标、Few-Shot、约束、异常处理等技巧；并能根据任务复杂度、上下文长度、成本与延迟选模型和上下文策略，结合 RAG、工具调用、Memory 等方式提升输出的准确性与稳定性 [2]。\n- **Agent 与 Harness**：了解 Planner、Skill、工具调用、状态、约束、反馈与循环执行机制，能用这些思路提升 Agent 的任务完成能力 [2]。\n- **RAG 实践**：有从数据清洗、切片、嵌入模型选型、向量库选型、检索策略、重排序到生成优化 Prompt 的完整 RAG 搭建经验，能优化检索效果、缓解幻觉 [2]。\n\n### 设计能力\n- **视觉设计**：具备构图、色彩、版式、字体、图底关系、形式美法则等基础，也能做图标、Banner、活动视觉、品牌 / VI / IP 等设计 [3]。\n- **UI/UX 设计**：能完成小程序、H5、App、Web、客户端等多端界面设计，掌握信息架构、交互设计、用户流程、状态设计及可用性原则 [3]。\n- **设计系统与动效**：能搭建设计规范、组件库与 Design System，具备基础 UI 动效、微交互与 AE 动画制作能力 [3]。\n- **AI 辅助设计**：熟练使用 Figma、PS、Illustrator、AE，并会用 ChatGPT、Gemini、Codex、Figma Make、v0、即梦、可灵等 AI 工具辅助视觉探索、原型设计与方案落地 [3]。\n\n### 产品专业能力\n- **需求分析**：能收集、分析、拆解需求并判断优先级，从用户诉求中识别真实需求并转化为功能 [4]。\n- **产品研究**：能做市场调研、行业分析、竞品分析与用户研究，辅助判断产品机会、定义目标用户及差异化方向 [4]。\n- **产品设计**：能完成 MVP 定义、功能规划、信息架构、业务流程、用户流程、原型 Demo 及 PRD 输出 [4]。\n- **产品验证**：理解产品指标、用户反馈、数据分析与迭代方法，能结合业务目标持续优化方案 [4]。\n\n### 其他特点与工具\n- 自驱力强，一个月左右完成转行并加入千人以上互联网公司；有每日读书、复盘习惯，每天关注 AI 最新动态并试用新产品 [5]。\n- 常用工具：Coze、Dify、Cursor、Codex、Gemini、即梦、Figma、PS、Illustrator、AE、Flow、stitch、v0、Lovart、SQL、Excel 等 [5]。",
+      "citations": [
+        {
+          "index": 2,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 2,
+          "chunkId": "9cae6aa258782208",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "AI 认知及应用能力："
+          ]
+        },
+        {
+          "index": 3,
+          "chunkId": "0f91769d7571629e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "设计能力"
+          ]
+        },
+        {
+          "index": 3,
+          "chunkId": "0f91769d7571629e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "设计能力"
+          ]
+        },
+        {
+          "index": 3,
+          "chunkId": "0f91769d7571629e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "设计能力"
+          ]
+        },
+        {
+          "index": 3,
+          "chunkId": "0f91769d7571629e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "设计能力"
+          ]
+        },
+        {
+          "index": 4,
+          "chunkId": "28781c380d1137af",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "产品专业能力："
+          ]
+        },
+        {
+          "index": 4,
+          "chunkId": "28781c380d1137af",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "产品专业能力："
+          ]
+        },
+        {
+          "index": 4,
+          "chunkId": "28781c380d1137af",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "产品专业能力："
+          ]
+        },
+        {
+          "index": 4,
+          "chunkId": "28781c380d1137af",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "能力及优势：",
+            "产品专业能力："
+          ]
+        },
+        {
+          "index": 5,
+          "chunkId": "88880f52e33fbd3e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "个人简介："
+          ]
+        },
+        {
+          "index": 5,
+          "chunkId": "88880f52e33fbd3e",
+          "sourceId": "src_f019c1ec",
+          "headingPath": [
+            "个人简介："
+          ]
+        }
+      ],
+      "traceId": "trace_22de54cb",
+      "createdAt": "2026-08-09T09:28:26.668Z"
+    }
+  ],
+  "createdAt": "2026-08-09T09:27:11.574Z",
+  "updatedAt": "2026-08-09T09:28:26.668Z"
+}

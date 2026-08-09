@@ -1,4 +1,3241 @@
 {
-  "items": [],
-  "runs": []
+  "items": [
+    {
+      "id": "evalitem_ed4d2a80",
+      "question": "你的个人背景和转行经历是什么？",
+      "expectedChunkIds": [
+        "07c343a245853e29",
+        "baf79353106055ad"
+      ],
+      "referenceAnswer": "安工程环艺本科，后转 UI 设计，再因兴趣转向 AI 产品；有每日学习复盘习惯，并使用 Coze、Dify 等工具实践。",
+      "tags": [
+        "简介",
+        "事实"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    },
+    {
+      "id": "evalitem_6f65c939",
+      "question": "你做过哪些设计项目？",
+      "expectedChunkIds": [
+        "f7007ee89bd78c50",
+        "cb90d108f39cbb3d",
+        "ccfa13587a6abbb7"
+      ],
+      "referenceAnswer": "包括绿城中国 AI 智能体界面、方太制冰饮水机设备端界面、博世家电 IP 动效、校园快送等设计项目。",
+      "tags": [
+        "项目",
+        "设计"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    },
+    {
+      "id": "evalitem_7feb4c00",
+      "question": "行动喵是什么项目？",
+      "expectedChunkIds": [
+        "5d3bf9a31b835e8b"
+      ],
+      "referenceAnswer": "行动喵是产品方向的项目之一。",
+      "tags": [
+        "项目",
+        "产品"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    },
+    {
+      "id": "evalitem_a88a3a7c",
+      "question": "你拿过哪些奖项？",
+      "expectedChunkIds": [
+        "9484062b4b6fd9da"
+      ],
+      "referenceAnswer": "包括中国大学生计算机设计大赛安徽省二等奖、安徽省环境设计大赛三等奖等。",
+      "tags": [
+        "奖项",
+        "事实"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    },
+    {
+      "id": "evalitem_18641f2e",
+      "question": "你的 AI 产品能力有哪些？",
+      "expectedChunkIds": [
+        "b48a3d6513f3f991",
+        "79055594ebeb7a5f"
+      ],
+      "referenceAnswer": "覆盖需求分析、PRD、原型交互，以及 Coze/Dify 等 AI 应用落地能力，目标岗位偏 AI 产品经理。",
+      "tags": [
+        "能力",
+        "简历"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    },
+    {
+      "id": "evalitem_981b02b3",
+      "question": "你的 GitHub 是什么？",
+      "expectedChunkIds": [
+        "00cf18ebb042275a"
+      ],
+      "referenceAnswer": "GitHub 为 Sunboyisme。",
+      "tags": [
+        "联系方式",
+        "事实"
+      ],
+      "createdAt": "2026-08-08T17:14:46.763Z"
+    }
+  ],
+  "runs": [
+    {
+      "id": "eval_2cd45862",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_ed292542",
+      "recipeName": "只有向量检索",
+      "includeAnswer": true,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": [
+          "LLM-as-Judge 1-5（需参考答案）"
+        ]
+      },
+      "summary": {
+        "count": 6,
+        "withExpected": 6,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 0.8055555555555555,
+        "avgRecallAt10": 0.9166666666666666,
+        "avgMrr": 0.7916666666666666,
+        "hitRate": 1,
+        "avgAnswerScore": 3.6666666666666665,
+        "judgedCount": 6
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_7feb4c00",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 1
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": "根据提供的参考资料，仅能查看到“行动喵”作为“覃彦涛个人能力画像 > 项目： > 产品：”下的一个项目名称，但参考资料中未包含关于“行动喵”的具体项目内容、目标或细节说明，因此无法回答“行动喵是什么项目”。[1]",
+          "judge": {
+            "score": 1,
+            "reason": "模型答案未能给出‘行动喵’的定义，反而声称无法回答，与参考答案‘行动喵是产品方向的项目之一’完全不符，属于未作答/答非所问。"
+          }
+        },
+        {
+          "itemId": "evalitem_a88a3a7c",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 3
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": "根据资料，我获得的奖项包括：\n\n- 2026年中国大学生计算机设计大赛安徽省二等奖\n- 2024年安徽省环境设计大赛三等奖\n- 2025年安徽省环境设计大赛三等奖\n- 安徽工程大学22届羽毛球新生杯单打季军\n- 安徽工程大学25届羽毛球校杯团体冠军\n- 安徽省十五届芜湖市大学生羽毛球比赛团体第5名\n\n[1]",
+          "judge": {
+            "score": 3,
+            "reason": "模型回答包含了参考答案中的两个奖项（中国大学生计算机设计大赛安徽省二等奖、安徽省环境设计大赛三等奖），但额外列出了多个未经证实或可能虚构的奖项，如具体年份、体育比赛奖项等，存在编造或与事实不符的风险，因此只能算部分正确。"
+          }
+        },
+        {
+          "itemId": "evalitem_ed4d2a80",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 4
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": "根据提供的资料，你的个人背景和转行经历如下：\n\n**教育背景**：安徽工程大学环境艺术设计专业本科（2022–2026）[3]。\n\n**转行经历**：从环境艺术设计转行到 UI 设计（4.1–7.1），在此期间发现对 AI 产品有极大兴趣，业余时间学习和实践制作 AI 产品，现在先以 AI 产品经理入行 [1]。凭借极强的自学能力和自驱力，约一个月左右完成转行，并加入一家 1000 人以上的互联网公司 [1]。\n\n**实习经历**：曾在杭州全速网络技术有限公司担任 UI 设计师（实习，2026.02–2026.06），参与绿城中国内部 AI 智能体 POC，负责对话界面视觉与交互设计，以及方太智能饮水机设备端的图标与操作反馈方案 [5]。",
+          "judge": {
+            "score": 4,
+            "reason": "模型答案准确涵盖了参考答案中的核心信息（安工程环艺本科、转UI设计、因兴趣转向AI产品、使用工具实践），并补充了实习细节和转行时长，但未能明确提及每日学习复盘习惯及Coze/Dify等工具实践，略有遗漏。"
+          }
+        },
+        {
+          "itemId": "evalitem_6f65c939",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true,
+            "answerScore": 4
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": "根据参考资料，您参与过的设计项目主要有：\n\n1. **绿城中国 AI 智能体界面设计**（视觉设计师，2026.05–2026.06）：负责 AI 对话界面视觉与交互设计，梳理用户提问、AI 思考、工具调用、结果输出和引用来源等信息层级；设计 FAQ 检索、飞书文档查询、外部搜索、制度查询等多轮工具调用状态，完善进行中、完成、失败、展开/收起等反馈；完成 Web 与移动端界面适配，优化输入框、工具卡片、弹窗、代码展示和搜索结果面板的阅读体验；参与“小绿同学”IP、功能图标与状态动效设计。[4]\n\n2. **杭州全速网络实习期间的设计工作**（2026.02–2026.06）：参与绿城中国内部 AI 智能体 POC，负责 Web/移动端对话界面视觉与交互设计；同时为方太智能饮水机设备端梳理温度、水量、制冰和滤芯状态，完成 6 个核心功能图标及操作反馈方案。[2]\n\n另外，资料中还提到您有一个自研项目“零食电商 AI 售后客服”，但未详细描述具体设计内容。[2]",
+          "judge": {
+            "score": 4,
+            "reason": "模型答案准确描述了绿城中国AI智能体界面和方太制冰饮水机设备端界面设计，信息较详细，但遗漏了参考答案中提到的博世家电IP动效和校园快送两个项目，属于大体正确但略有遗漏。"
+          }
+        },
+        {
+          "itemId": "evalitem_18641f2e",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": "根据参考资料，覃彦涛的 AI 产品能力主要包括以下几方面：\n\n- **产品与研究能力**：具备市场调研、行业分析、竞品分析、需求调研与拆解、产品定义、PRD 撰写、产品架构、业务流程梳理、原型交互设计、指标设计、数据飞轮与反馈闭环等完整产品基本功 [2][4]。\n- **AI 应用与实践能力**：熟悉 Coze/Dify 智能体与工作流搭建、Vibe Coding Demo 制作、Prompt 设计及调优、RAG 切分检索调优、Tool Use 调用、Skill 制作、Agent 及 Multi-agent 设计；能完成模型选型、评测验收、成本计算、指标定义、评估集 Eval 定义，以及 AI 风险边界、幻觉与兜底设计 [2][4]。\n- **AI 认知与边界理解**：理解 Embedding、Transformer、预训练、微调、扩散模型、多模态等大模型基础概念，并能判断 AI 能做什么、不能做什么，以及如何节省 Token、控制成本 [4][5]。\n- **原型与设计能力**：可完成 Web、移动端与设备端界面、组件规范和状态交互设计，熟练使用 Figma、Figjam、Xmind 等工具 [4]。\n- **工程与工具能力**：精通 Cursor、Codex、Coze、Dify、Figma、飞书文档、Notion 等，可快速搭建可交互 Demo；已有十几款 AI 产品项目经验，其中 AI 应用占大头 [1][4]。\n- **项目落地经验**：例如零食电商 AI 售后客服项目中，输出立项书与 PRD，搭建 Next.js 对话 Demo，调用 Coze 工作流，设计六类评测框架及验收指标；AI 入职助理项目中，完成市场地图与竞品矩阵，提出“有来源、懂边界、能转人工”的定位 [3]。",
+          "judge": {
+            "score": 5,
+            "reason": "模型答案全面覆盖了参考答案中的需求分析、PRD、原型交互、Coze/Dify等AI应用落地能力，并且进一步细化了AI认知、工程工具和项目经验，内容更详尽且不偏离目标岗位，事实准确完整。"
+          }
+        },
+        {
+          "itemId": "evalitem_981b02b3",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": "根据参考资料，覃彦涛的 GitHub 是：https://github.com/Sunboyisme [1]",
+          "judge": {
+            "score": 5,
+            "reason": "模型回答准确提供了GitHub链接，与参考答案一致，且补充了姓名和引用来源，事实准确完整。"
+          }
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_ed4d2a80",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 4
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": "根据提供的资料，你的个人背景和转行经历如下：\n\n**教育背景**：安徽工程大学环境艺术设计专业本科（2022–2026）[3]。\n\n**转行经历**：从环境艺术设计转行到 UI 设计（4.1–7.1），在此期间发现对 AI 产品有极大兴趣，业余时间学习和实践制作 AI 产品，现在先以 AI 产品经理入行 [1]。凭借极强的自学能力和自驱力，约一个月左右完成转行，并加入一家 1000 人以上的互联网公司 [1]。\n\n**实习经历**：曾在杭州全速网络技术有限公司担任 UI 设计师（实习，2026.02–2026.06），参与绿城中国内部 AI 智能体 POC，负责对话界面视觉与交互设计，以及方太智能饮水机设备端的图标与操作反馈方案 [5]。",
+          "judge": {
+            "score": 4,
+            "reason": "模型答案准确涵盖了参考答案中的核心信息（安工程环艺本科、转UI设计、因兴趣转向AI产品、使用工具实践），并补充了实习细节和转行时长，但未能明确提及每日学习复盘习惯及Coze/Dify等工具实践，略有遗漏。"
+          }
+        },
+        {
+          "itemId": "evalitem_6f65c939",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true,
+            "answerScore": 4
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": "根据参考资料，您参与过的设计项目主要有：\n\n1. **绿城中国 AI 智能体界面设计**（视觉设计师，2026.05–2026.06）：负责 AI 对话界面视觉与交互设计，梳理用户提问、AI 思考、工具调用、结果输出和引用来源等信息层级；设计 FAQ 检索、飞书文档查询、外部搜索、制度查询等多轮工具调用状态，完善进行中、完成、失败、展开/收起等反馈；完成 Web 与移动端界面适配，优化输入框、工具卡片、弹窗、代码展示和搜索结果面板的阅读体验；参与“小绿同学”IP、功能图标与状态动效设计。[4]\n\n2. **杭州全速网络实习期间的设计工作**（2026.02–2026.06）：参与绿城中国内部 AI 智能体 POC，负责 Web/移动端对话界面视觉与交互设计；同时为方太智能饮水机设备端梳理温度、水量、制冰和滤芯状态，完成 6 个核心功能图标及操作反馈方案。[2]\n\n另外，资料中还提到您有一个自研项目“零食电商 AI 售后客服”，但未详细描述具体设计内容。[2]",
+          "judge": {
+            "score": 4,
+            "reason": "模型答案准确描述了绿城中国AI智能体界面和方太制冰饮水机设备端界面设计，信息较详细，但遗漏了参考答案中提到的博世家电IP动效和校园快送两个项目，属于大体正确但略有遗漏。"
+          }
+        },
+        {
+          "itemId": "evalitem_7feb4c00",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 1
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": "根据提供的参考资料，仅能查看到“行动喵”作为“覃彦涛个人能力画像 > 项目： > 产品：”下的一个项目名称，但参考资料中未包含关于“行动喵”的具体项目内容、目标或细节说明，因此无法回答“行动喵是什么项目”。[1]",
+          "judge": {
+            "score": 1,
+            "reason": "模型答案未能给出‘行动喵’的定义，反而声称无法回答，与参考答案‘行动喵是产品方向的项目之一’完全不符，属于未作答/答非所问。"
+          }
+        },
+        {
+          "itemId": "evalitem_a88a3a7c",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 3
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": "根据资料，我获得的奖项包括：\n\n- 2026年中国大学生计算机设计大赛安徽省二等奖\n- 2024年安徽省环境设计大赛三等奖\n- 2025年安徽省环境设计大赛三等奖\n- 安徽工程大学22届羽毛球新生杯单打季军\n- 安徽工程大学25届羽毛球校杯团体冠军\n- 安徽省十五届芜湖市大学生羽毛球比赛团体第5名\n\n[1]",
+          "judge": {
+            "score": 3,
+            "reason": "模型回答包含了参考答案中的两个奖项（中国大学生计算机设计大赛安徽省二等奖、安徽省环境设计大赛三等奖），但额外列出了多个未经证实或可能虚构的奖项，如具体年份、体育比赛奖项等，存在编造或与事实不符的风险，因此只能算部分正确。"
+          }
+        },
+        {
+          "itemId": "evalitem_18641f2e",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": "根据参考资料，覃彦涛的 AI 产品能力主要包括以下几方面：\n\n- **产品与研究能力**：具备市场调研、行业分析、竞品分析、需求调研与拆解、产品定义、PRD 撰写、产品架构、业务流程梳理、原型交互设计、指标设计、数据飞轮与反馈闭环等完整产品基本功 [2][4]。\n- **AI 应用与实践能力**：熟悉 Coze/Dify 智能体与工作流搭建、Vibe Coding Demo 制作、Prompt 设计及调优、RAG 切分检索调优、Tool Use 调用、Skill 制作、Agent 及 Multi-agent 设计；能完成模型选型、评测验收、成本计算、指标定义、评估集 Eval 定义，以及 AI 风险边界、幻觉与兜底设计 [2][4]。\n- **AI 认知与边界理解**：理解 Embedding、Transformer、预训练、微调、扩散模型、多模态等大模型基础概念，并能判断 AI 能做什么、不能做什么，以及如何节省 Token、控制成本 [4][5]。\n- **原型与设计能力**：可完成 Web、移动端与设备端界面、组件规范和状态交互设计，熟练使用 Figma、Figjam、Xmind 等工具 [4]。\n- **工程与工具能力**：精通 Cursor、Codex、Coze、Dify、Figma、飞书文档、Notion 等，可快速搭建可交互 Demo；已有十几款 AI 产品项目经验，其中 AI 应用占大头 [1][4]。\n- **项目落地经验**：例如零食电商 AI 售后客服项目中，输出立项书与 PRD，搭建 Next.js 对话 Demo，调用 Coze 工作流，设计六类评测框架及验收指标；AI 入职助理项目中，完成市场地图与竞品矩阵，提出“有来源、懂边界、能转人工”的定位 [3]。",
+          "judge": {
+            "score": 5,
+            "reason": "模型答案全面覆盖了参考答案中的需求分析、PRD、原型交互、Coze/Dify等AI应用落地能力，并且进一步细化了AI认知、工程工具和项目经验，内容更详尽且不偏离目标岗位，事实准确完整。"
+          }
+        },
+        {
+          "itemId": "evalitem_981b02b3",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": "根据参考资料，覃彦涛的 GitHub 是：https://github.com/Sunboyisme [1]",
+          "judge": {
+            "score": 5,
+            "reason": "模型回答准确提供了GitHub链接，与参考答案一致，且补充了姓名和引用来源，事实准确完整。"
+          }
+        }
+      ],
+      "createdAt": "2026-08-08T17:15:59.341Z"
+    },
+    {
+      "id": "eval_8f2ee6e8",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_ed292542",
+      "recipeName": "只有向量检索",
+      "includeAnswer": false,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": []
+      },
+      "summary": {
+        "count": 6,
+        "withExpected": 6,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 0.8055555555555555,
+        "avgRecallAt10": 0.9166666666666666,
+        "avgMrr": 0.7916666666666666,
+        "hitRate": 1,
+        "avgAnswerScore": null,
+        "judgedCount": 0
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "createdAt": "2026-08-08T17:13:25.910Z"
+    },
+    {
+      "id": "eval_7b3121e9",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_default",
+      "recipeName": "默认配置",
+      "includeAnswer": true,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": [
+          "LLM-as-Judge 1-5（需参考答案）"
+        ]
+      },
+      "summary": {
+        "count": 1,
+        "withExpected": 1,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 1,
+        "avgRecallAt10": 1,
+        "avgMrr": 1,
+        "hitRate": 1,
+        "avgAnswerScore": 5,
+        "judgedCount": 1
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": "根据提供的参考资料，GitHub 是 https://github.com/Sunboyisme [1]。",
+          "judge": {
+            "score": 5,
+            "reason": "模型答案准确给出了GitHub为Sunboyisme，与参考答案一致，且提供了对应URL，信息完整无误。"
+          }
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true,
+            "answerScore": 5
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": "根据提供的参考资料，GitHub 是 https://github.com/Sunboyisme [1]。",
+          "judge": {
+            "score": 5,
+            "reason": "模型答案准确给出了GitHub为Sunboyisme，与参考答案一致，且提供了对应URL，信息完整无误。"
+          }
+        }
+      ],
+      "createdAt": "2026-08-08T17:09:59.876Z"
+    },
+    {
+      "id": "eval_adb67e2c",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_ed292542",
+      "recipeName": "只有向量检索",
+      "includeAnswer": false,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": []
+      },
+      "summary": {
+        "count": 6,
+        "withExpected": 6,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 0.8055555555555555,
+        "avgRecallAt10": 0.9166666666666666,
+        "avgMrr": 0.7916666666666666,
+        "hitRate": 1,
+        "avgAnswerScore": null,
+        "judgedCount": 0
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "9484062b4b6fd9da",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.3333333333333333,
+            "recallAt10": 1,
+            "mrr": 0.25,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "5d3bf9a31b835e8b",
+            "9719961d87851384",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "00cf18ebb042275a",
+            "f7007ee89bd78c50",
+            "b48a3d6513f3f991",
+            "9719961d87851384",
+            "baf79353106055ad",
+            "c83e5338bbd3db9e",
+            "07c343a245853e29",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "9484062b4b6fd9da",
+            "5ec703f1286706a8",
+            "cb90d108f39cbb3d"
+          ],
+          "selectedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "617477523981b8c9",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "65c7e778e61ae1a6",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "9484062b4b6fd9da",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "b48a3d6513f3f991"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 0.5,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "f7007ee89bd78c50",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "9719961d87851384",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5ec703f1286706a8"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "79055594e6927a5f",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "dc47b08309fbbca4",
+            "f7007ee89bd78c50",
+            "5ec703f1286706a8",
+            "baf79353106055ad",
+            "9484062b4b6fd9da",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "9719961d87851384"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "createdAt": "2026-08-08T17:09:44.917Z"
+    },
+    {
+      "id": "eval_bdb4a278",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_default",
+      "recipeName": "默认配置",
+      "includeAnswer": false,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": []
+      },
+      "summary": {
+        "count": 6,
+        "withExpected": 6,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 0.7777777777777777,
+        "avgRecallAt10": 0.861111111111111,
+        "avgMrr": 0.8888888888888888,
+        "hitRate": 1,
+        "avgAnswerScore": null,
+        "judgedCount": 0
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "f7007ee89bd78c50",
+            "baf79353106055ad",
+            "5ec703f1286706a8",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "5d3bf9a31b835e8b",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.6666666666666666,
+            "recallAt10": 0.6666666666666666,
+            "mrr": 0.3333333333333333,
+            "hit": true
+          },
+          "retrievedIds": [
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "f7007ee89bd78c50",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "b48a3d6513f3f991",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "f7007ee89bd78c50",
+            "79055594e6927a5f",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "b48a3d6513f3f991",
+            "baf79353106055ad",
+            "00cf18ebb042275a",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "7a4abc27ad0eacbe",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "7a4abc27ad0eacbe",
+            "9484062b4b6fd9da",
+            "dc47b08309fbbca4",
+            "c83e5338bbd3db9e",
+            "5d3bf9a31b835e8b"
+          ],
+          "selectedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "f7007ee89bd78c50",
+            "baf79353106055ad",
+            "5ec703f1286706a8",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "5d3bf9a31b835e8b",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.6666666666666666,
+            "recallAt10": 0.6666666666666666,
+            "mrr": 0.3333333333333333,
+            "hit": true
+          },
+          "retrievedIds": [
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "f7007ee89bd78c50",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "b48a3d6513f3f991",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "f7007ee89bd78c50",
+            "79055594e6927a5f",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "b48a3d6513f3f991",
+            "baf79353106055ad",
+            "00cf18ebb042275a",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "7a4abc27ad0eacbe",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "7a4abc27ad0eacbe",
+            "9484062b4b6fd9da",
+            "dc47b08309fbbca4",
+            "c83e5338bbd3db9e",
+            "5d3bf9a31b835e8b"
+          ],
+          "selectedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "createdAt": "2026-08-08T17:09:44.302Z"
+    },
+    {
+      "id": "eval_ecf53166",
+      "type": "single",
+      "collectionId": "col_5ce90e55",
+      "recipeId": "recipe_default",
+      "recipeName": "默认配置",
+      "includeAnswer": false,
+      "criteria": {
+        "retrieval": [
+          "Hit@5",
+          "Hit@10",
+          "Recall@5",
+          "Recall@10",
+          "MRR"
+        ],
+        "answer": []
+      },
+      "summary": {
+        "count": 6,
+        "withExpected": 6,
+        "avgHitAt5": 1,
+        "avgHitAt10": 1,
+        "avgRecallAt5": 0.7777777777777777,
+        "avgRecallAt10": 0.861111111111111,
+        "avgMrr": 0.8888888888888888,
+        "hitRate": 1,
+        "avgAnswerScore": null,
+        "judgedCount": 0
+      },
+      "badCases": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "f7007ee89bd78c50",
+            "baf79353106055ad",
+            "5ec703f1286706a8",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "5d3bf9a31b835e8b",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.6666666666666666,
+            "recallAt10": 0.6666666666666666,
+            "mrr": 0.3333333333333333,
+            "hit": true
+          },
+          "retrievedIds": [
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "f7007ee89bd78c50",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "b48a3d6513f3f991",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "f7007ee89bd78c50",
+            "79055594e6927a5f",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "b48a3d6513f3f991",
+            "baf79353106055ad",
+            "00cf18ebb042275a",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "7a4abc27ad0eacbe",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "7a4abc27ad0eacbe",
+            "9484062b4b6fd9da",
+            "dc47b08309fbbca4",
+            "c83e5338bbd3db9e",
+            "5d3bf9a31b835e8b"
+          ],
+          "selectedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "results": [
+        {
+          "itemId": "evalitem_8e40e0e1",
+          "question": "你的个人背景和转行经历是什么？",
+          "tags": [
+            "简介",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "07c343a245853e29",
+            "baf79353106055ad"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "b48a3d6513f3f991",
+            "f7007ee89bd78c50",
+            "baf79353106055ad",
+            "5ec703f1286706a8",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "5d3bf9a31b835e8b",
+            "dc47b08309fbbca4",
+            "65c7e778e61ae1a6",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "07c343a245853e29"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_86649949",
+          "question": "你做过哪些设计项目？",
+          "tags": [
+            "项目",
+            "设计"
+          ],
+          "expectedChunkIds": [
+            "f7007ee89bd78c50",
+            "cb90d108f39cbb3d",
+            "ccfa13587a6abbb7"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.6666666666666666,
+            "recallAt10": 0.6666666666666666,
+            "mrr": 0.3333333333333333,
+            "hit": true
+          },
+          "retrievedIds": [
+            "79055594e6927a5f",
+            "617477523981b8c9",
+            "ccfa13587a6abbb7",
+            "f7007ee89bd78c50",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "b48a3d6513f3f991",
+            "9484062b4b6fd9da",
+            "7a4abc27ad0eacbe",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "5ec703f1286706a8",
+            "00cf18ebb042275a",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "5d3bf9a31b835e8b",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_52d52ddc",
+          "question": "行动喵是什么项目？",
+          "tags": [
+            "项目",
+            "产品"
+          ],
+          "expectedChunkIds": [
+            "5d3bf9a31b835e8b"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "5d3bf9a31b835e8b",
+            "7a4abc27ad0eacbe",
+            "617477523981b8c9",
+            "f7007ee89bd78c50",
+            "79055594e6927a5f",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "5ec703f1286706a8",
+            "b48a3d6513f3f991",
+            "baf79353106055ad",
+            "00cf18ebb042275a",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e",
+            "dc47b08309fbbca4",
+            "cb90d108f39cbb3d",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_875595bc",
+          "question": "你拿过哪些奖项？",
+          "tags": [
+            "奖项",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "9484062b4b6fd9da"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "9484062b4b6fd9da",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "ccfa13587a6abbb7",
+            "79055594e6927a5f",
+            "b48a3d6513f3f991",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "9719961d87851384",
+            "00cf18ebb042275a",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "cb90d108f39cbb3d",
+            "c83e5338bbd3db9e",
+            "7a4abc27ad0eacbe",
+            "65c7e778e61ae1a6"
+          ],
+          "selectedIds": [],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_5a392ef6",
+          "question": "你的 AI 产品能力有哪些？",
+          "tags": [
+            "能力",
+            "简历"
+          ],
+          "expectedChunkIds": [
+            "b48a3d6513f3f991",
+            "79055594ebeb7a5f"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 0.5,
+            "recallAt10": 0.5,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f",
+            "baf79353106055ad",
+            "617477523981b8c9",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "ccfa13587a6abbb7",
+            "9719961d87851384",
+            "65c7e778e61ae1a6",
+            "00cf18ebb042275a",
+            "cb90d108f39cbb3d",
+            "7a4abc27ad0eacbe",
+            "9484062b4b6fd9da",
+            "dc47b08309fbbca4",
+            "c83e5338bbd3db9e",
+            "5d3bf9a31b835e8b"
+          ],
+          "selectedIds": [
+            "b48a3d6513f3f991",
+            "07c343a245853e29",
+            "79055594e6927a5f"
+          ],
+          "answer": null,
+          "judge": null
+        },
+        {
+          "itemId": "evalitem_71adc3e4",
+          "question": "你的 GitHub 是什么？",
+          "tags": [
+            "联系方式",
+            "事实"
+          ],
+          "expectedChunkIds": [
+            "00cf18ebb042275a"
+          ],
+          "metrics": {
+            "hitAt5": true,
+            "hitAt10": true,
+            "recallAt5": 1,
+            "recallAt10": 1,
+            "mrr": 1,
+            "hit": true
+          },
+          "retrievedIds": [
+            "00cf18ebb042275a",
+            "b48a3d6513f3f991",
+            "617477523981b8c9",
+            "07c343a245853e29",
+            "baf79353106055ad",
+            "79055594e6927a5f",
+            "5ec703f1286706a8",
+            "f7007ee89bd78c50",
+            "7a4abc27ad0eacbe",
+            "ccfa13587a6abbb7",
+            "cb90d108f39cbb3d",
+            "dc47b08309fbbca4",
+            "5d3bf9a31b835e8b",
+            "65c7e778e61ae1a6",
+            "9719961d87851384",
+            "9484062b4b6fd9da",
+            "c83e5338bbd3db9e"
+          ],
+          "selectedIds": [
+            "00cf18ebb042275a"
+          ],
+          "answer": null,
+          "judge": null
+        }
+      ],
+      "createdAt": "2026-08-08T17:09:42.473Z"
+    }
+  ],
+  "compares": [
+    {
+      "id": "evalcmp_6cb3e777",
+      "type": "compare",
+      "collectionId": "col_5ce90e55",
+      "recipeIds": [
+        "recipe_default",
+        "recipe_ed292542"
+      ],
+      "includeAnswer": false,
+      "matrix": [
+        {
+          "recipeId": "recipe_default",
+          "recipeName": "默认配置",
+          "runId": "eval_bdb4a278",
+          "summary": {
+            "count": 6,
+            "withExpected": 6,
+            "avgHitAt5": 1,
+            "avgHitAt10": 1,
+            "avgRecallAt5": 0.7777777777777777,
+            "avgRecallAt10": 0.861111111111111,
+            "avgMrr": 0.8888888888888888,
+            "hitRate": 1,
+            "avgAnswerScore": null,
+            "judgedCount": 0
+          }
+        },
+        {
+          "recipeId": "recipe_ed292542",
+          "recipeName": "只有向量检索",
+          "runId": "eval_adb67e2c",
+          "summary": {
+            "count": 6,
+            "withExpected": 6,
+            "avgHitAt5": 1,
+            "avgHitAt10": 1,
+            "avgRecallAt5": 0.8055555555555555,
+            "avgRecallAt10": 0.9166666666666666,
+            "avgMrr": 0.7916666666666666,
+            "hitRate": 1,
+            "avgAnswerScore": null,
+            "judgedCount": 0
+          }
+        }
+      ],
+      "createdAt": "2026-08-08T17:09:44.919Z"
+    }
+  ]
 }

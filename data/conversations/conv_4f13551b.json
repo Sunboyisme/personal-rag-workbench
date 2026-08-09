@@ -1,0 +1,47 @@
+{
+  "id": "conv_4f13551b",
+  "title": "访客对话",
+  "collectionId": "col_f76b4aeb",
+  "recipeId": "recipe_1d35d4a0",
+  "messages": [
+    {
+      "id": "msg_66aee315",
+      "role": "user",
+      "content": "怎么联系你合作？",
+      "citations": [],
+      "traceId": null,
+      "createdAt": "2026-08-09T10:00:22.145Z"
+    },
+    {
+      "id": "msg_a4bc0518",
+      "role": "assistant",
+      "content": "你可以通过我的工作邮箱 **qinbai302@gmail.com** 联系我，洽谈合作或交流项目都行 [1]。\n\n- **邮箱**：qinbai302@gmail.com，这是我目前最直接的联系方式。\n- **个人网站 / GitHub**：也可以通过这些渠道了解我的作品和项目背景 [1]；不过具体的网址链接我没有放进当前知识库，如果你需要，可以在邮件里说明，我再发给你。\n\n因为合作涉及具体需求和时间安排，最好先把你的想法发到邮箱，我再详细回复。",
+      "citations": [
+        {
+          "index": 1,
+          "chunkId": "05cf9db5633c73f5",
+          "sourceId": "src_ba753d4a",
+          "headingPath": [
+            "常见问题标准回答",
+            "基本信息",
+            "Q：如何联系你？"
+          ]
+        },
+        {
+          "index": 1,
+          "chunkId": "05cf9db5633c73f5",
+          "sourceId": "src_ba753d4a",
+          "headingPath": [
+            "常见问题标准回答",
+            "基本信息",
+            "Q：如何联系你？"
+          ]
+        }
+      ],
+      "traceId": "trace_301efbae",
+      "createdAt": "2026-08-09T10:00:22.145Z"
+    }
+  ],
+  "createdAt": "2026-08-09T10:00:17.745Z",
+  "updatedAt": "2026-08-09T10:00:22.145Z"
+}

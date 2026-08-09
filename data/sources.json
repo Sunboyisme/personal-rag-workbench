@@ -1,19 +1,7 @@
 [
   {
-    "id": "src_ee3bdf57",
-    "title": "书籍与课程",
-    "filename": "书籍与课程📚.md",
-    "sourceFormat": "md",
-    "tags": [],
-    "aliases": [],
-    "links": [],
-    "frontmatter": {},
-    "charCount": 7229,
-    "createdAt": "2026-08-08T08:27:15.073Z"
-  },
-  {
-    "id": "src_eae88589",
-    "title": "覃彦涛个人能力画像",
+    "id": "src_f019c1ec",
+    "title": "覃彦涛个人知识库",
     "filename": "覃彦涛个人背景.md",
     "sourceFormat": "md",
     "tags": [],
@@ -25,11 +13,10 @@
       "sources": [
         "2026.7.9 覃彦涛简历",
         "UI UX 交互设计简历",
-        "UI 设计作品集",
-        "QINBAI-note 项目与知识笔记"
+        "UI 设计作品集"
       ]
     },
-    "charCount": 4646,
-    "createdAt": "2026-08-08T08:27:20.041Z"
+    "charCount": 8304,
+    "createdAt": "2026-08-09T09:15:56.059Z"
   }
 ]

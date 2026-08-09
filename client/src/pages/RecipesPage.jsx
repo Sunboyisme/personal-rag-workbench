@@ -5,51 +5,80 @@ export default function RecipesPage() {
   const [recipes, setRecipes] = useState([]);
   const [selected, setSelected] = useState(null);
   const [activeRecipeId, setActiveRecipeId] = useState('');
+  const [menuId, setMenuId] = useState(null);
   const [diffA, setDiffA] = useState('');
   const [diffB, setDiffB] = useState('');
   const [diffResult, setDiffResult] = useState(null);
 
-  async function load() {
+  async function load(preferId) {
     const [list, active] = await Promise.all([api.getRecipes(), api.getActiveRecipe()]);
+    const activeId = active?.activeRecipeId || list[0]?.id || '';
     setRecipes(list);
-    setActiveRecipeId(active?.activeRecipeId || list[0]?.id || '');
-    setSelected((prev) => {
-      if (prev) {
-        const fresh = list.find((r) => r.id === prev.id);
-        if (fresh) return fresh;
-      }
-      return list.find((r) => r.id === active?.activeRecipeId) || list[0] || null;
-    });
+    setActiveRecipeId(activeId);
+    const next =
+      (preferId && list.find((r) => r.id === preferId)) ||
+      list.find((r) => r.id === activeId) ||
+      list[0] ||
+      null;
+    setSelected(next);
   }
 
   useEffect(() => { load(); }, []);
 
-  async function handleFork(id) {
-    const name = prompt('新配置名称');
-    if (!name?.trim()) return;
-    try {
-      const created = await api.forkRecipe(id, name.trim());
-      const [list, active] = await Promise.all([api.getRecipes(), api.getActiveRecipe()]);
-      setRecipes(list);
-      setActiveRecipeId(active?.activeRecipeId || '');
-      setSelected(list.find((r) => r.id === created.id) || created);
-
-      const useNow = window.confirm(
-        `已复制为「${created.name}」。\n\n注意：复制不会自动影响问答，需要设为「问答默认」才会生效。\n是否现在设为问答默认？`
-      );
-      if (useNow) {
-        await api.setActiveRecipe(created.id);
-        setActiveRecipeId(created.id);
+  useEffect(() => {
+    if (!menuId) return undefined;
+    function onPointerDown(event) {
+      if (!event.target.closest?.('.collection-menu')) {
+        setMenuId(null);
       }
+    }
+    function onKeyDown(event) {
+      if (event.key === 'Escape') setMenuId(null);
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [menuId]);
+
+  async function handleFork(id) {
+    const source = recipes.find((r) => r.id === id);
+    const defaultName = `${source?.name || '配置'} 副本`;
+    const name = window.prompt('新配置名称', defaultName);
+    if (name === null) return;
+    const finalName = name.trim() || defaultName;
+    try {
+      const created = await api.forkRecipe(id, finalName);
+      await load(created.id);
+      alert(`已复制为「${created.name}」。\n\n请编辑后点击「设为问答默认」，才会影响问答。`);
     } catch (error) {
       alert(error.message || '复制失败');
+    }
+  }
+
+  async function handleDelete(recipe) {
+    setMenuId(null);
+    if (recipes.length <= 1) {
+      alert('至少保留一个 Recipe');
+      return;
+    }
+    if (!window.confirm(`确定删除「${recipe.name}」？此操作不可撤销。`)) return;
+    try {
+      const result = await api.deleteRecipe(recipe.id);
+      setActiveRecipeId(result.activeRecipeId || '');
+      const nextPrefer = selected?.id === recipe.id ? result.activeRecipeId : selected?.id;
+      await load(nextPrefer);
+    } catch (error) {
+      alert(error.message || '删除失败');
     }
   }
 
   async function handleSave() {
     if (!selected) return;
     await api.updateRecipe(selected.id, selected);
-    await load();
+    await load(selected.id);
     alert('已保存');
   }
 
@@ -87,32 +116,59 @@ export default function RecipesPage() {
           <h3>Recipe 列表</h3>
           <div className="source-list">
             {recipes.map((r) => (
-              <button
-                key={r.id}
-                type="button"
-                className={`source-btn ${selected?.id === r.id ? 'active' : ''}`}
-                onClick={() => setSelected(r)}
-              >
-                <strong>
-                  {r.name}
-                  {r.id === activeRecipeId ? ' · 问答默认' : ''}
-                </strong>
-                <span>{r.id} {r.parentId && `(复制自 ${r.parentId})`}</span>
-              </button>
+              <div key={r.id} className={`version-row ${selected?.id === r.id ? 'active' : ''}`}>
+                <button
+                  type="button"
+                  className={`source-btn version-row-main ${selected?.id === r.id ? 'active' : ''}`}
+                  onClick={() => setSelected(r)}
+                >
+                  <strong>
+                    {r.name}
+                    {r.id === activeRecipeId ? ' · 问答默认' : ''}
+                  </strong>
+                  <span>{r.id} {r.parentId && `(复制自 ${r.parentId})`}</span>
+                </button>
+                <div className={`collection-menu ${menuId === r.id ? 'open' : ''}`}>
+                  <button
+                    type="button"
+                    className="btn ghost btn-icon collection-menu-trigger"
+                    aria-label={`管理 ${r.name}`}
+                    aria-expanded={menuId === r.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setMenuId((prev) => (prev === r.id ? null : r.id));
+                    }}
+                  >
+                    ⋯
+                  </button>
+                  {menuId === r.id && (
+                    <div className="collection-menu-panel" role="menu">
+                      <button
+                        type="button"
+                        role="menuitem"
+                        className="collection-menu-item danger"
+                        onClick={() => handleDelete(r)}
+                      >
+                        删除
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
           {selected && (
             <div className="recipe-list-actions">
-              <button className="btn secondary" onClick={() => handleFork(selected.id)}>
+              <button type="button" className="btn secondary" onClick={() => handleFork(selected.id)}>
                 复制此配置
               </button>
-              <button className="btn primary" onClick={handleSetActive} disabled={selected.id === activeRecipeId}>
+              <button type="button" className="btn primary" onClick={handleSetActive} disabled={selected.id === activeRecipeId}>
                 {selected.id === activeRecipeId ? '当前问答默认' : '设为问答默认'}
               </button>
             </div>
           )}
           <p className="muted small recipe-hint">
-            复制只会新建一份配置；问答页实际使用的是带「问答默认」标记的那一份。
+            「复制」会新建一份配置并自动选中；问答实际使用带「问答默认」标记的那一份。
           </p>
         </section>
 
@@ -173,7 +229,7 @@ export default function RecipesPage() {
             <h4>生成</h4>
             <label>Temperature <input type="number" step="0.1" value={selected.generation?.temperature} onChange={(e) => updateSection('generation', 'temperature', Number(e.target.value))} /></label>
 
-            <button className="btn primary" onClick={handleSave}>保存配置</button>
+            <button type="button" className="btn primary" onClick={handleSave}>保存配置</button>
           </section>
         )}
       </div>
@@ -189,7 +245,7 @@ export default function RecipesPage() {
             <option value="">Recipe B</option>
             {recipes.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
           </select>
-          <button className="btn secondary" onClick={handleDiff}>对比</button>
+          <button type="button" className="btn secondary" onClick={handleDiff}>对比</button>
         </div>
         {diffResult && (
           <div className="diff-list">

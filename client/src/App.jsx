@@ -26,9 +26,6 @@ function parsePath(pathname) {
   }
   if (pathname.startsWith(`${ADMIN_PREFIX}/`)) {
     const tab = pathname.slice(`${ADMIN_PREFIX}/`.length).split('/')[0];
-    if (tab === 'eval') {
-      return { name: 'admin', tab: 'modules' };
-    }
     const valid = [
       'sources',
       'chunk-lab',
@@ -38,6 +35,7 @@ function parsePath(pathname) {
       'modules',
       'prompts',
       'logs',
+      'eval',
     ];
     if (valid.includes(tab)) return { name: 'admin', tab };
   }

@@ -4,7 +4,7 @@ const { dataDir } = require('./config');
 
 function ensureDataDir() {
   fs.mkdirSync(dataDir, { recursive: true });
-  for (const sub of ['sources', 'chunksets', 'vectors', 'traces', 'embedding_cache']) {
+  for (const sub of ['sources', 'chunksets', 'vectors', 'traces', 'embedding_cache', 'conversations']) {
     fs.mkdirSync(path.join(dataDir, sub), { recursive: true });
   }
 }
